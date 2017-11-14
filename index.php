@@ -27,6 +27,7 @@
                 }
                 else {
                     include("pages/start.php");
+                    echo 'test';
                 }
 
             ?>
