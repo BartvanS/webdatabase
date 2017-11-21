@@ -15,20 +15,35 @@
     ?>
         <div class="header">
         <a href="?content=login">Login</a>
+        <a href="?content=logout">Logout</a>
+        <a href="?content=admin">adminpage</a>
         </div>
         <div class="container">
             <?php 
-           
+            if(isset($_SESSION['typeofuser'])){
+                if($_SESSION['typeofuser'] != "1"){
+                    echo 'U are granted level of supreme normie';
+                    $_SESSION['typeofuser'] = "";
+                }else   
+                var_dump($_SESSION);
+                if($_SESSION['typeofuser'] == "1"){
+                    // echo ' ey man je bent super cool';
+                }elseif($_SESSION['typeofuser'] == ''){
+            }
+            }
                 if (isset($_GET["content"]))
                 {
+                   
                     $_SESSION['content']=$_GET['content'];
                     include("pages/".$_GET["content"].".php"); 
-                    echo $_SESSION['content'].'test';
+                    // echo $_SESSION['content'].'test';
+                    
                 }
                 else {
                     include("pages/start.php");
-                    echo 'test';
+                    echo 'Welkom op de homepagina';
                 }
+            
 
             ?>
             </div>
