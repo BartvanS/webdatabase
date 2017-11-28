@@ -28,40 +28,27 @@
             echo " <br />";
             echo $dir;
             echo " <br />";
-            $file_parts = pathinfo($filename);
-            
-            switch($file_parts['extension'])
-            {
-                case "jpg":
-                break;
-            
-                case "png":
-                break;
 
-                case "jpeg":
-                break;
-            
-                case "": // Handle file extension for files ending in '.'
-                case NULL: // Handle no file extension
-                break;
-            }
-            if($file_parts){
-                echo "het is een plaatje";
-            }else{
-                echo "boi geen plaatje";
-            }
 
-            if ($handle = opendir($dir)) {
-                
-                    while (false !== ($entry = readdir($handle))) {
-                
-                        if ($entry != "." && $entry != "..") {
-                            echo "<a href='/cloudstorage/files/bartvans/".$entry."'>$entry</a><br />";
-                        }
-                    }
-                
-                    closedir($handle);
+            $extArray = array('jpg', 'png', 'jpeg', 'gif');
+    
+            foreach($dir as $file)
+            {   
+                $ext = end(explode('.', $file));
+                if(in_array($ext, $extArray)) {
+                    echo "<div class='post'>
+                             <img width='200px' src='post/'". $file ." />
+                          </div>";
+                }else {  
+                    echo "<div class='post'>"
+                             . file_get_contents('post/'.$file)
+                          ."</div>";
                 }
+    
+            }
+            
+
+ 
 
         }
     }
