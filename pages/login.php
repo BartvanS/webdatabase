@@ -36,17 +36,5 @@ try {
 } catch ( Exception $e) {
     echo $e->getMessage();
 }
-
- 
-
-var_dump($rows);
-var_dump(password_hash('demo', PASSWORD_DEFAULT));
-    // if(isset($_POST['username']) == $row['username']){
-    //     header('Location: ../pages/main.php');
-    // }
-// }
 }
 
-
-//koppel files path per account
-//max upload timing en datum

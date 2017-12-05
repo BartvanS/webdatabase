@@ -8,15 +8,18 @@
 </head>
 <body>
     <?php 
-              include("global/connect_db.php");
-              ob_start();
-              session_start();
-              include("global/userrole_links.php");
+            ob_start();
+            session_start();
+            include("global/classes.php");
+            include("global/connect_db.php");
+
+            include("global/userrole_links.php");
     ?>
         <div class="header">
         <a href="?content=login">Login</a>
         <a href="?content=logout">Logout</a>
         <a href="?content=admin">adminpage</a>
+        <a href="?content=createaccount">createaccount</a>
         </div>
         <div class="container">
             <?php 

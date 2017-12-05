@@ -10,10 +10,10 @@
     <?php 
     if(isset($_SESSION['typeofuser'])){
   
-        if($_SESSION['personid'] != "1"){
+        if($_SESSION['typeofuser'] != "1"){
             echo "U bent niet gemachtigd voor deze pagina";
         }
-        if($_SESSION['personid'] == "1"){
+        if($_SESSION['typeofuser'] == "1"){
             echo "jij bent: " . $_SESSION['username'];
             echo "<br> id van uw link naar uw mappie: ".$_SESSION['personid'] ;
             $pathId = $_SESSION['personid'];
@@ -22,30 +22,20 @@
             $pathconnection->execute();
             if($pathconnection) echo "<script>console.log('Connection gemaakt met de path');</script>";
             $paths = $pathconnection->fetchAll();
-            echo "<br> uw path id= ". $paths[0]['pathto'];
+            // echo "<br> uw path id= ". $paths[0]['pathto'];
             $dir = $paths[0]['pathto'];
  
             echo " <br />";
             echo $dir;
             echo " <br />";
 
-
-            $extArray = array('jpg', 'png', 'jpeg', 'gif');
-    
-            foreach($dir as $file)
-            {   
-                $ext = end(explode('.', $file));
-                if(in_array($ext, $extArray)) {
-                    echo "<div class='post'>
-                             <img width='200px' src='post/'". $file ." />
-                          </div>";
-                }else {  
-                    echo "<div class='post'>"
-                             . file_get_contents('post/'.$file)
-                          ."</div>";
-                }
-    
-            }
+   
+            echo '<form action="global/upload.php" method="post" enctype="multipart/form-data">
+            Select image to upload:
+            <input type="file" multiple="multiple" name="fileToUpload[]" id="fileToUpload">
+            <input type="submit" value="Upload Image" name="submit"><br />
+                </form>';
+     
             
 
  
