@@ -20,6 +20,8 @@
         <a href="?content=logout">Logout</a>
         <a href="?content=admin">adminpage</a>
         <a href="?content=createaccount">createaccount</a>
+        <a href="?content=test">test</a>
+        <a href="?content=getfiles">getfiles</a>
         </div>
         <div class="container">
             <?php 
