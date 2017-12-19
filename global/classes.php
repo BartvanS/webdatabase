@@ -2,9 +2,9 @@
     class User{
         public $username;
         public $roleId;
-        public function __construct(){
+        public function __construct($username){
         }
-        public function Login(){
+        public function CreateAccount($username, $password){
         
         }
     }

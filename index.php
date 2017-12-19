@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
 <body>
     <?php 
@@ -14,6 +15,7 @@
             include("global/connect_db.php");
 
             include("global/userrole_links.php");
+            
     ?>
         <div class="header">
         <a href="?content=login">Login</a>
@@ -52,7 +54,7 @@
 
             ?>
             </div>
-
-
+<script src="packages/jquery-3.2.1.min.js"></script>
+<script src="script/index.js"></script>
 </body>
 </html>
