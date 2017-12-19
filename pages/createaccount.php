@@ -10,18 +10,9 @@ if(isset($_POST['usernamecreate']) && isset($_POST['passwordcreate'])){
     
 $user = $_POST['usernamecreate'];
 $password = $_POST['passwordcreate'];
-$passwordhashed = password_hash($user, PASSWORD_DEFAULT);
-$path = "C:/wamp64/www/cloudstorage/files/" . $user;
 
-$sql = $conn->prepare('INSERT INTO `users` values(null,
-                                                            "'.$user.'",
-                                                            "'.$passwordhashed.'"   ,
-                                                            "1")');
-$sql->execute();
 
-$sqlpath = $conn->prepare('INSERT INTO `path` values(NULL, "'.$path.'")');
-$sqlpath->execute();
-if($sql) echo 'execute select statement gelukt';// if executed
+
 
 }
 
