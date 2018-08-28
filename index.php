@@ -27,7 +27,8 @@
         <div class="container">
             <?php
               if (ISSET($_SESSION['username'])) {
-                echo $_SESSION['username'];
+                echo "Welkom " .$_SESSION['username'] . "<br />";
+                echo "u heeft de rol: " .$_SESSION['roleId'] . "<br />";
               }
             if(isset($_SESSION['typeofuser'])){
                 if($_SESSION['typeofuser'] != "1"){

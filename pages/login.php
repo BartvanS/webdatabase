@@ -22,10 +22,11 @@ try {
     header('Location: index.php');
 
 //set de variables van de user op de website
-    var_dump($rows[0][1]);
+    var_dump($rows);
     // $_SESSION['typeofuser'] = $rows[0]['roleId'];
     // $_SESSION['personid'] = $rows[0]['id'];
     $_SESSION['username'] = $rows[0][1];
+    $_SESSION['roleId'] = $rows[0][3];
 
 
 } catch ( Exception $e) {
