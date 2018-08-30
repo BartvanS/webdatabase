@@ -1,6 +1,8 @@
   <?php
-  echo __NAMESPACE__;
-  $dir    = 'C:\wamp64\www\webdatabase\files\bartvans';
+  if (!file_exists('C:\wamp64\www\webdatabase\files/' .$_SESSION['username'])) {
+      mkdir('C:\wamp64\www\webdatabase\files/' .$_SESSION['username'], 0777, true);
+  }
+  $dir    = 'C:\wamp64\www\webdatabase\files/' .$_SESSION['username'];
   $videoImg = '/global/images/video-play.png';
   $txtImg = '/global/images/text.png';
   $files1 = scandir($dir);

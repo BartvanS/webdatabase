@@ -1,16 +1,27 @@
 <?php
-require_once("C:\wamp64\www\webdatabase\packages\classes\upload.php");
+session_start();
+var_dump($_SESSION);
+$username =  $_SESSION['username'];
+echo $username . "<br />";
+
+//controleert of de folder voor de user wel bestaat
+  require_once("C:\wamp64\www\webdatabase\packages\classes\upload.php");
+  if (!file_exists('C:\wamp64\www\webdatabase\files/'.$_SESSION['username'])) {
+      mkdir('C:\wamp64\www\webdatabase\files/'.$_SESSION['username'], 0777, true);
+  }
+$adress = 'C:\wamp64\www\webdatabase\files/'.$username;
+echo $adress;
 $handle = new upload($_FILES['image_field']);
-echo $_POST['name'];
+//echo $_POST['name'];
 if ($handle->uploaded) {
   $handle->file_new_name_body   = $_POST['name'];
   $handle->image_resize         = false;
   $handle->image_x              = 100;
   $handle->image_ratio_y        = true;
-  $handle->process('C:\wamp64\www\webdatabase\files\bartvans');
+  $handle->process($adress);
   if ($handle->processed) {
     header('Location: http://database.local/');
-    echo 'image resized';
+  //  echo 'image resized';
     $handle->clean();
 
 

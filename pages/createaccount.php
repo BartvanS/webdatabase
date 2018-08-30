@@ -7,14 +7,24 @@
 
 <?php
 if(isset($_POST['usernamecreate']) && isset($_POST['passwordcreate'])){
-    
-$user = $_POST['usernamecreate'];
-$password = $_POST['passwordcreate'];
+    $user = $_POST['usernamecreate'];
+    $passwordHashed = password_hash($_POST['passwordcreate'], PASSWORD_DEFAULT);
+try {
+//probeert de username en gehashed pw in de db te zetten
+      $stmt = $conn->prepare("INSERT INTO `users` (`id`, `userName`, `password`, `roleId`) VALUES (NULL, '".$user."', '".$passwordHashed."', '0')");
+      // $stmt->bindValue('USERNAME', $user);
+      // $stmt->bindValue('USERNAME', $password);
+      $stmt->execute();
+      if($stmt) echo 'execute select statement gelukt';// if executed
 
 
 
+} catch ( Exception $e) {
+    echo $e->getMessage();
+}
 
 }
+
 
 
 
@@ -23,34 +33,14 @@ $password = $_POST['passwordcreate'];
 // $password = $_POST['password'];
 // $stmt = $conn->prepare('SELECT * FROM users WHERE `username` = :USERNAME');
 // $stmt->bindValue('USERNAME', $user);
-// $stmt->execute(); 
+// $stmt->execute();
 // if($stmt) echo 'execute select statement gelukt';// if executed
-// $rows = $stmt->fetchAll(); 
+// $rows = $stmt->fetchAll();
 
 
-// try {
-
-//     if(count($rows) !== 1) {
-//         throw new Exception('Username niet bekend!');
-//     }
- 
-//     if(!password_verify($password, $rows[0]['password'])){
-//         throw new Exception('Wachtwoord is verkeerd.');
-//     }
-    
-//     // echo $_SESSION['typeofuser'] . "test";
-//     // echo 'es habe gewurst';
-//     header('Location: index.php');
-//     $_SESSION['typeofuser'] = $rows[0]['roleId'];
-//     $_SESSION['personid'] = $rows[0]['id'];
-//     $_SESSION['username'] =$rows[0]['username'];
 
 
-// } catch ( Exception $e) {
-//     echo $e->getMessage();
-// }
 
- 
 
 // var_dump($rows);
 // var_dump(password_hash('demo', PASSWORD_DEFAULT));

@@ -2,7 +2,7 @@
 
 var_dump($_FILES['fileToUpload']);
 
-$target_dir = "C:/wamp64/www/cloudstorage/files/bartvans/";
+$target_dir = "C:/wamp64/www/cloudstorage/files/" . $_SESSION['username'];
 $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"][0]);
 echo $target_file;
 
