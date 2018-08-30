@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 28, 2018 at 11:01 PM
--- Server version: 5.7.19
--- PHP Version: 7.1.9
+-- Gegenereerd op: 30 aug 2018 om 23:23
+-- Serverversie: 5.7.19
+-- PHP-versie: 7.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -25,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `itemsort`
+-- Tabelstructuur voor tabel `itemsort`
 --
 
 DROP TABLE IF EXISTS `itemsort`;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `itemsort` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `roles`
+-- Tabelstructuur voor tabel `roles`
 --
 
 DROP TABLE IF EXISTS `roles`;
@@ -52,25 +52,26 @@ CREATE TABLE IF NOT EXISTS `roles` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Tabelstructuur voor tabel `users`
 --
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE IF NOT EXISTS `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userName` varchar(50) NOT NULL,
-  `password` varchar(50) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `roleId` int(11) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM AUTO_INCREMENT=13 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM AUTO_INCREMENT=25 DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `users`
+-- Gegevens worden geëxporteerd voor tabel `users`
 --
 
 INSERT INTO `users` (`id`, `userName`, `password`, `roleId`) VALUES
-(1, 'cooleuser', 'poepen123', 0),
-(12, 'bartvans', 'poepen123', 1);
+(24, 'test', '$2y$10$Mf1ML9Roxq.JA0MMh8xkF.mmtXCbig96Aw73r4383qyEvsV9ne1sm', 0),
+(23, 'bartvans', '$2y$10$MK4aJ6.f16.F8GBQa/s1geUe0OJV7/9NgKN4b1TrYRoEwoUraIvBO', 0),
+(21, 'bart', '$2y$10$2hEPRUOT5usm96Fziqr0v.OoRn/s2wa2DPwXPlT72Z9MW5ukd4JXC', 1);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
