@@ -4,6 +4,7 @@ $user = $_POST['username'];
 $password = $_POST['password'];
 $stmt = $conn->prepare('SELECT * FROM users WHERE `username` = :USERNAME');
 $stmt->bindValue('USERNAME', $user);
+// $stmt->bindValue('PASSWORD', $password);
 $stmt->execute();
   //controleert of de query werkt
     //  if($stmt) echo 'execute select statement gelukt';// if executed
@@ -11,10 +12,12 @@ $rows = $stmt->fetchAll();
 echo count($rows);
 try {
 
-    if(count($rows) !== 1) {
+    if(count($rows) < 1) {
         throw new Exception('Username niet bekend!');
     }
-
+    if(count($rows) > 1) {
+        throw new Exception('Meerdere mensen met deze gebruikersnaam!');
+    }
 
     //controleert of de password klopt
       $hash = $rows[0][2];
